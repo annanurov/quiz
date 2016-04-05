@@ -6,7 +6,9 @@
 
 <?php 
 	$isPost = False;
-	if( ! isset($_POST["submit"]) ){
+	if( ! isset($_POST["submit"]) ||		//before "go" button pressed
+				$_POST["items"] < 1		){  //or is pressed with a bad value
+											//stay on fron screen
 		
 ?>
 
@@ -19,6 +21,7 @@
 <?php
 	}
 	else{
+		
 		//showAdditionArray($_POST["items"]);
 	//	echo "</br>";echo "</br>";
 		showSubtractionArray($_POST["items"]);
@@ -65,24 +68,21 @@ function showAdditionArray($a){
 
 <?php
 function makeAdditionProblem($min, $max, $i){
-	
 	$x = rand($min, $max);
-			$y = rand($min, $max);
-			$res = $x + $y;
-			echo $x . " + " . $y . " = ";
-			$name = "result" . $i;
-			$xname = "x" . $i;
-			$yname = "y" . $i;
-			$resname = "res" . $i;
-			?>
-			<input type = "text" name = <?php echo $name?>>
-			<input type = "hidden" name = <?php echo $resname?> value = <?php echo $res?>>
-			<?php
-	
-	
-}//end of makeAdditionProblem
-
+	$y = rand($min, $max);
+	$res = $x + $y;
+	echo $x . " + " . $y . " = ";
+	$name = "result" . $i;
+	$xname = "x" . $i;
+	$yname = "y" . $i;
+	$resname = "res" . $i;
 ?>
+	<input type = "text" name = <?php echo $name?>>
+	<input type = "hidden" name = <?php echo $resname?> value = <?php echo $res?>>
+<?php
+}//end of makeAdditionProblem
+?>
+
 <?php
 function showSubtractionArray($a){
 	$c = 1;
