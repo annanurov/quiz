@@ -14,19 +14,20 @@ foreach($keys as $k){
 	if (startsWith($k, "result")){
 		$result2 = $_POST[$k];
 		//echo "result: " . $x2;
+		continue;
 	}
-	if (startsWith($k, "sum")){
+	if (startsWith($k, "res")){
 		$sum2 = $_POST[$k];
 		//echo "sum: " . $sum2;
-	if($sum2 == $result2){		
-		$score = $score  + 1;
-	}
+		if($sum2 == $result2){		
+			$score = $score  + 1;
+		}
 
-	$outof = $outof  + 1;
+		$outof = $outof  + 1;
 	}
 	
 	
-}
+}//end of foreach($keys as $k)
 echo "Your score is " . $score . " out of " . $outof;
 
 
@@ -40,6 +41,8 @@ function endsWith($haystack, $needle) {
     return $needle === "" || (($temp = strlen($haystack) - strlen($needle)) >= 0 && strpos($haystack, $needle, $temp) !== false);
 }
 
+//above functions are taken from http://stackoverflow.com/questions/834303/startswith-and-endswith-functions-in-php
+//Thanks to MrHus 
 ?>
 
 
